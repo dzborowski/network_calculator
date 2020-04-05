@@ -15,8 +15,8 @@ export class IpAddressValidator {
 	}
 
 	protected isIpAddressBaseStructureValid():boolean {
-		const ipAddressStructure = "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,2}$";
-		return new RegExp(ipAddressStructure).test(this.ipAddress);
+		const ipAddressBaseStructure = "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,2}$";
+		return new RegExp(ipAddressBaseStructure).test(this.ipAddress);
 	}
 
 	protected isIpAddressDeepStructureValid():boolean {
