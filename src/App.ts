@@ -17,14 +17,19 @@ export class App {
 
 		const networkCalculator = new NetworkCalculator(ipAddress);
 
-		const decimalIp = IpAddressParser.getDecimalIpFromIpAddress(ipAddress);
-		const binaryIp = IpAddressParser.parseDecimalIpToBinaryIp(decimalIp);
-		IpView.displayBinaryIpAsDecimalIp(binaryIp);
-		IpView.displayDecimalIpAsBinaryIp(decimalIp);
+		const hostDecimalIp = IpAddressParser.getDecimalIpFromIpAddress(ipAddress);
+		const hostBinaryIp = IpAddressParser.parseDecimalIpToBinaryIp(hostDecimalIp);
+		IpView.displayBinaryIpAsDecimalIp(hostBinaryIp);
+		IpView.displayDecimalIpAsBinaryIp(hostDecimalIp);
 
-		const binaryMask = networkCalculator.getMaskBinaryIpFromIpAddress();
-		const decimalMask = IpAddressParser.parseBinaryIpToDecimalIp(binaryMask);
-		IpView.displayBinaryIpAsDecimalIp(binaryMask);
-		IpView.displayDecimalIpAsBinaryIp(decimalMask);
+		const maskBinaryIp = networkCalculator.getMaskBinaryIpFromIpAddress();
+		const maskDecimalIp = IpAddressParser.parseBinaryIpToDecimalIp(maskBinaryIp);
+		IpView.displayBinaryIpAsDecimalIp(maskBinaryIp);
+		IpView.displayDecimalIpAsBinaryIp(maskDecimalIp);
+
+		const networkBinaryIp = networkCalculator.getNetworkBinaryIp(hostBinaryIp, maskBinaryIp);
+		// const networkDecimalIp =  IpAddressParser.parseBinaryIpToDecimalIp(networkBinaryIp);
+		// IpView.displayBinaryIpAsDecimalIp(networkBinaryIp);
+		// IpView.displayDecimalIpAsBinaryIp(networkDecimalIp);
 	}
 }
