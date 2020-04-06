@@ -1,15 +1,15 @@
 import {Bit} from "./Bit";
 
 export class BinaryParser {
-	public static readonly radix = 2;
+	protected static readonly RADIX = 2;
 
-	public static bitsToNumber(bits:Bit[]):number {
-		const binaryString = bits.join("");
-		return Number.parseInt(binaryString, BinaryParser.radix);
+	public static binaryToDecimal(binary:Bit[]):number {
+		const binaryString = binary.join("");
+		return Number.parseInt(binaryString, BinaryParser.RADIX);
 	}
 
-	public static numberToBits(num:number):Bit[] {
-		const bits = num.toString(BinaryParser.radix).split("");
+	public static decimalToBinary(decimal:number):Bit[] {
+		const bits = decimal.toString(BinaryParser.RADIX).split("");
 		return bits.map(bit => Number.parseInt(bit));
 	}
 }

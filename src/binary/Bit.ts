@@ -1,6 +1,6 @@
 export enum BitValue {
-	Positive,
-	Negative
+	POSITIVE = 0,
+	NEGATIVE = 1
 }
 
-export type Bit = BitValue.Positive | BitValue.Negative;
+export type Bit = BitValue.POSITIVE | BitValue.NEGATIVE;

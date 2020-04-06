@@ -1,0 +1,1 @@
+export type DecimalIp = [number, number, number, number]

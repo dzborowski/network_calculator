@@ -1,3 +1,6 @@
+import {BinaryParser} from "../binary/BinaryParser";
+import {BinaryIp} from "./BinaryIp";
+import {DecimalIp} from "./DecimalIp";
 import {IpAddress} from "./IpAddress";
 
 export class IpAddressParser {
@@ -12,5 +15,13 @@ export class IpAddressParser {
 			fourthOctet: parsedOctets[3],
 			mask: Number.parseInt(mask),
 		};
+	}
+
+	public static parseBinaryIpToDecimalIp(binaryIp:BinaryIp):DecimalIp {
+		return binaryIp.map(octet => BinaryParser.binaryToDecimal(octet)) as DecimalIp;
+	}
+
+	public static parseDecimalIpToBinaryIp(decimalIp:DecimalIp):BinaryIp {
+		return decimalIp.map(octet => BinaryParser.decimalToBinary(octet)) as BinaryIp;
 	}
 }

@@ -1,11 +1,7 @@
+import {IpAddressConfig} from "./IpAddressConfig";
 import {IpAddressParser} from "./IpAddressParser";
 
 export class IpAddressValidator {
-	protected readonly MIN_IP_OCTET_VALUE = 0;
-	protected readonly MAX_IP_OCTET_VALUE = 255;
-	protected readonly MIN_IP_MASK_VALUE = 0;
-	protected readonly MAX_IP_MASK_VALUE = 32;
-
 	constructor(protected ipAddress:string) {}
 
 	public isIpAddressValid():boolean {
@@ -29,10 +25,10 @@ export class IpAddressValidator {
 	}
 
 	protected isIpOctetValid(octet:number):boolean {
-		return octet >= this.MIN_IP_OCTET_VALUE && octet <= this.MAX_IP_OCTET_VALUE;
+		return octet >= IpAddressConfig.MIN_IP_OCTET_VALUE && octet <= IpAddressConfig.MAX_IP_OCTET_VALUE;
 	}
 
 	protected isIpMaskValid(mask:number):boolean {
-		return mask >= this.MIN_IP_MASK_VALUE && mask <= this.MAX_IP_MASK_VALUE;
+		return mask >= IpAddressConfig.MIN_IP_MASK_VALUE && mask <= IpAddressConfig.MAX_IP_MASK_VALUE;
 	}
 }
