@@ -7,7 +7,7 @@ import {IpAddressConfig} from "../ipAddress/IpAddressConfig";
 export class NetworkCalculator {
 	constructor(protected ipAddress:IpAddress) {}
 
-	public getBinaryMaskFromIpAddress():BinaryIp {
+	public getMaskBinaryIpFromIpAddress():BinaryIp {
 		const rawBinaryMask = new Array(IpAddressConfig.RAW_BINARY_IP_LENGTH).fill(BitValue.POSITIVE);
 
 		for (let i = 0; i < IpAddressConfig.RAW_BINARY_IP_LENGTH; i++) {
@@ -25,4 +25,8 @@ export class NetworkCalculator {
 		binaryMask.forEach((octet, i) => binaryMask[i] = rawBinaryMask.splice(0, 8) as BinaryOctet);
 		return binaryMask;
 	}
+
+	// public getNetworkBinaryIp(hostBinaryIp:BinaryIp, maskBinaryIp:BinaryIp):BinaryIp {
+	//
+	// }
 }

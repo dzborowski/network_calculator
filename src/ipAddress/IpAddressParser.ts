@@ -2,6 +2,7 @@ import {BinaryParser} from "../binary/BinaryParser";
 import {BinaryIp} from "./BinaryIp";
 import {DecimalIp} from "./DecimalIp";
 import {IpAddress} from "./IpAddress";
+import {IpAddressConfig} from "./IpAddressConfig";
 
 export class IpAddressParser {
 	public static getParsedIpAddress(ipAddress:string):IpAddress {
@@ -17,11 +18,17 @@ export class IpAddressParser {
 		};
 	}
 
+	public static getDecimalIpFromIpAddress(ipAddress:IpAddress):DecimalIp {
+		return Object.values(ipAddress).slice(0, 4) as DecimalIp;
+	}
+
 	public static parseBinaryIpToDecimalIp(binaryIp:BinaryIp):DecimalIp {
 		return binaryIp.map(octet => BinaryParser.binaryToDecimal(octet)) as DecimalIp;
 	}
 
 	public static parseDecimalIpToBinaryIp(decimalIp:DecimalIp):BinaryIp {
-		return decimalIp.map(octet => BinaryParser.decimalToBinary(octet)) as BinaryIp;
+		return decimalIp.map(octet => {
+			return BinaryParser.decimalToBinary(octet, IpAddressConfig.RAW_BINARY_OCTET_LENGTH);
+		}) as BinaryIp;
 	}
 }

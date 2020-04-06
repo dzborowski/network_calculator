@@ -3,7 +3,7 @@ import {DecimalIp} from "./DecimalIp";
 import {IpAddressParser} from "./IpAddressParser";
 
 export class IpView {
-	public static displayBinaryIpAsDecimal(binaryIp:BinaryIp) {
+	public static displayBinaryIpAsDecimalIp(binaryIp:BinaryIp) {
 		const formattedDecimalIp = IpView.getFormattedDecimalIpFromBinaryIp(binaryIp);
 		console.log(formattedDecimalIp);
 	}
@@ -13,7 +13,7 @@ export class IpView {
 		return decimalIp.join(".");
 	}
 
-	public static displayDecimalIpAsBinary(decimalIp:DecimalIp) {
+	public static displayDecimalIpAsBinaryIp(decimalIp:DecimalIp) {
 		const formattedBinaryIp = IpView.getFormattedBinaryIpFromDecimalIp(decimalIp);
 		console.log(formattedBinaryIp);
 	}

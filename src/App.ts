@@ -1,4 +1,5 @@
 import {IpAddress} from "./ipAddress/IpAddress";
+import {IpAddressParser} from "./ipAddress/IpAddressParser";
 import {IpView} from "./ipAddress/IpView";
 import {NetworkCalculator} from "./networkCalculator/NetworkCalculator";
 
@@ -15,8 +16,15 @@ export class App {
 		};
 
 		const networkCalculator = new NetworkCalculator(ipAddress);
-		const binaryMask = networkCalculator.getBinaryMaskFromIpAddress();
-		IpView.displayBinaryIpAsDecimal(binaryMask);
-		IpView.displayDecimalIpAsBinary([255, 255, 255, 255]);
+
+		const decimalIp = IpAddressParser.getDecimalIpFromIpAddress(ipAddress);
+		const binaryIp = IpAddressParser.parseDecimalIpToBinaryIp(decimalIp);
+		IpView.displayBinaryIpAsDecimalIp(binaryIp);
+		IpView.displayDecimalIpAsBinaryIp(decimalIp);
+
+		const binaryMask = networkCalculator.getMaskBinaryIpFromIpAddress();
+		const decimalMask = IpAddressParser.parseBinaryIpToDecimalIp(binaryMask);
+		IpView.displayBinaryIpAsDecimalIp(binaryMask);
+		IpView.displayDecimalIpAsBinaryIp(decimalMask);
 	}
 }
