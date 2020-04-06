@@ -6,9 +6,7 @@ export class IpAddressValidator {
 	protected readonly MIN_IP_MASK_VALUE = 0;
 	protected readonly MAX_IP_MASK_VALUE = 32;
 
-	constructor(protected ipAddress:string) {
-
-	}
+	constructor(protected ipAddress:string) {}
 
 	public isIpAddressValid():boolean {
 		return this.isIpAddressBaseStructureValid() && this.isIpAddressDeepStructureValid();

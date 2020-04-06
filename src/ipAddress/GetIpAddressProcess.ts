@@ -18,7 +18,6 @@ export class GetIpAddressProcess {
 		return IpAddressParser.getParsedIpAddress(validIpAddress);
 	}
 
-
 	protected async getValidIpAddress():Promise<string> {
 		let ipAddress = await this.getIpAddressFromUser();
 		const ipAddressValidator = new IpAddressValidator(ipAddress);
