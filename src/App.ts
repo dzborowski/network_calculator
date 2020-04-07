@@ -31,5 +31,23 @@ export class App {
 		const networkDecimalIp = IpAddressParser.parseBinaryIpToDecimalIp(networkBinaryIp);
 		IpView.displayBinaryIpAsDecimalIp(networkBinaryIp);
 		IpView.displayDecimalIpAsBinaryIp(networkDecimalIp);
+
+		const networkClass = networkCalculator.getNetworkClass(hostBinaryIp);
+		console.log("networkClass: ", (networkClass));
+
+		const broadcastBinaryIp = networkCalculator.getBroadcastBinaryIp(hostBinaryIp, maskBinaryIp);
+		const broadcastDecimalIp = IpAddressParser.parseBinaryIpToDecimalIp(broadcastBinaryIp);
+		IpView.displayBinaryIpAsDecimalIp(broadcastBinaryIp);
+		IpView.displayDecimalIpAsBinaryIp(broadcastDecimalIp);
+
+		const firstHostDecimalIp = networkCalculator.getFirstHostDecimalIp(networkDecimalIp);
+		const firstHostBinaryIp = IpAddressParser.parseDecimalIpToBinaryIp(firstHostDecimalIp);
+		IpView.displayBinaryIpAsDecimalIp(firstHostBinaryIp);
+		IpView.displayDecimalIpAsBinaryIp(firstHostDecimalIp);
+
+		const lastHostDecimalIp = networkCalculator.getLastHostDecimalIp(broadcastDecimalIp);
+		const lastHostBinaryIp = IpAddressParser.parseDecimalIpToBinaryIp(lastHostDecimalIp);
+		IpView.displayBinaryIpAsDecimalIp(lastHostBinaryIp);
+		IpView.displayDecimalIpAsBinaryIp(lastHostDecimalIp);
 	}
 }
