@@ -1,6 +1,5 @@
 import {BinaryParser} from "../binary/BinaryParser";
-import {Bit} from "../binary/Bit";
-import {BinaryIp} from "./BinaryIp";
+import {BinaryIp, BinaryOctetIp} from "./BinaryIp";
 import {DecimalIp} from "./DecimalIp";
 import {IpAddress} from "./IpAddress";
 import {IpAddressConfig} from "./IpAddressConfig";
@@ -24,15 +23,23 @@ export class IpAddressParser {
 	}
 
 	public static parseBinaryIpToDecimalIp(binaryIp:BinaryIp):DecimalIp {
-		return binaryIp.map(octet => BinaryParser.binaryToDecimal(octet)) as DecimalIp;
+		const binaryOctetsIp = IpAddressParser.parseBinaryIpToBinaryOctetsIp(binaryIp);
+		return binaryOctetsIp.map(binaryOctet => BinaryParser.binaryToDecimal(binaryOctet)) as DecimalIp;
 	}
 
 	public static parseDecimalIpToBinaryIp(decimalIp:DecimalIp):BinaryIp {
 		return decimalIp.map(octet => {
-			return BinaryParser.decimalToBinary(octet, IpAddressConfig.RAW_BINARY_OCTET_LENGTH);
-		}) as BinaryIp;
+			return BinaryParser.decimalToBinary(octet, IpAddressConfig.BINARY_OCTET_LENGTH);
+		}).flat() as BinaryIp;
 	}
 
-	public static parseRawBinaryIpToBinaryIp(rawBinaryIp:Bit[]):BinaryIp {
+	public static parseBinaryIpToBinaryOctetsIp(binaryIp:BinaryIp):BinaryOctetIp {
+		const binaryIpCopy = [...binaryIp];
+		const binaryOctetsIp = [];
+
+		while (binaryIpCopy.length)
+			binaryOctetsIp.push(binaryIpCopy.splice(0, IpAddressConfig.BINARY_OCTET_LENGTH));
+
+		return binaryOctetsIp as BinaryOctetIp;
 	}
 }

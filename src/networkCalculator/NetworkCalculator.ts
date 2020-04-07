@@ -1,5 +1,4 @@
-import {BinaryOctet} from "../binary/BinaryOctet";
-import {Bit, BitValue} from "../binary/Bit";
+import {BitValue} from "../binary/Bit";
 import {BinaryIp} from "../ipAddress/BinaryIp";
 import {IpAddress} from "../ipAddress/IpAddress";
 import {IpAddressConfig} from "../ipAddress/IpAddressConfig";
@@ -8,41 +7,29 @@ export class NetworkCalculator {
 	constructor(protected ipAddress:IpAddress) {}
 
 	public getMaskBinaryIpFromIpAddress():BinaryIp {
-		const rawBinaryMask = this.getRawBinaryIp();
+		const binaryMask = this.getInitialBinaryIp();
 
-		for (let i = 0; i < IpAddressConfig.RAW_BINARY_IP_LENGTH; i++) {
+		for (let i = 0; i < IpAddressConfig.BINARY_IP_LENGTH; i++) {
 			if (i < this.ipAddress.mask)
-				rawBinaryMask[i] = BitValue.NEGATIVE;
+				binaryMask[i] = BitValue.NEGATIVE;
 		}
 
-		const binaryMask:BinaryIp = [
-			this.getRawBinaryOctet() as BinaryOctet,
-			this.getRawBinaryOctet() as BinaryOctet,
-			this.getRawBinaryOctet() as BinaryOctet,
-			this.getRawBinaryOctet() as BinaryOctet,
-		];
-
-		binaryMask.forEach((octet, i) => binaryMask[i] = rawBinaryMask.splice(0, 8) as BinaryOctet);
 		return binaryMask;
 	}
 
-	// public getNetworkBinaryIp(hostBinaryIp:BinaryIp, maskBinaryIp:BinaryIp):BinaryIp {
-	public getNetworkBinaryIp(hostBinaryIp:BinaryIp, maskBinaryIp:BinaryIp) {
-		const maskLength = maskBinaryIp.flat().filter(bit => bit === BitValue.NEGATIVE).length;
-		const hostRawBinaryIp = hostBinaryIp.flat() as Bit[];
-		const networkRawBinaryIp = this.getRawBinaryIp();
+	public getNetworkBinaryIp(hostBinaryIp:BinaryIp, maskBinaryIp:BinaryIp):BinaryIp {
+		const maskLength = maskBinaryIp.filter(bit => bit === BitValue.NEGATIVE).length;
+		const networkBinaryIp = this.getInitialBinaryIp();
 
-		for (let i = 0; i < IpAddressConfig.RAW_BINARY_IP_LENGTH; i++) {
+		for (let i = 0; i < IpAddressConfig.BINARY_IP_LENGTH; i++) {
 			if (i < maskLength)
-				networkRawBinaryIp[i] = hostRawBinaryIp[i];
+				networkBinaryIp[i] = hostBinaryIp[i];
 		}
+
+		return networkBinaryIp;
 	}
 
-	protected getRawBinaryIp():Bit[] {
-		return new Array(IpAddressConfig.RAW_BINARY_IP_LENGTH).fill(BitValue.POSITIVE);
-	}
-
-	protected getRawBinaryOctet():Bit[] {
-		return new Array(IpAddressConfig.RAW_BINARY_OCTET_LENGTH).fill(BitValue.POSITIVE);
+	protected getInitialBinaryIp():BinaryIp {
+		return new Array(IpAddressConfig.BINARY_IP_LENGTH).fill(BitValue.POSITIVE) as BinaryIp;
 	}
 }

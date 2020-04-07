@@ -20,8 +20,9 @@ export class IpView {
 
 	protected static getFormattedBinaryIpFromDecimalIp(decimalIp:DecimalIp):string {
 		const binaryIp = IpAddressParser.parseDecimalIpToBinaryIp(decimalIp);
-		return binaryIp
-			.reduce((octets, binaryOctet) => [...octets, binaryOctet.join("")], [])
+		const binaryOctetsIp = IpAddressParser.parseBinaryIpToBinaryOctetsIp(binaryIp);
+		return binaryOctetsIp
+			.reduce((binaryOctets, binaryOctet) => [...binaryOctets, binaryOctet.join("")], [])
 			.join(".");
 	}
 }

@@ -28,8 +28,8 @@ export class App {
 		IpView.displayDecimalIpAsBinaryIp(maskDecimalIp);
 
 		const networkBinaryIp = networkCalculator.getNetworkBinaryIp(hostBinaryIp, maskBinaryIp);
-		// const networkDecimalIp =  IpAddressParser.parseBinaryIpToDecimalIp(networkBinaryIp);
-		// IpView.displayBinaryIpAsDecimalIp(networkBinaryIp);
-		// IpView.displayDecimalIpAsBinaryIp(networkDecimalIp);
+		const networkDecimalIp = IpAddressParser.parseBinaryIpToDecimalIp(networkBinaryIp);
+		IpView.displayBinaryIpAsDecimalIp(networkBinaryIp);
+		IpView.displayDecimalIpAsBinaryIp(networkDecimalIp);
 	}
 }
