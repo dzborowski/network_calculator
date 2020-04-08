@@ -3,7 +3,7 @@ import {App} from "./App";
 const app = new App();
 
 try {
-	app.init();
+	app.run();
 } catch (error) {
 	console.log("Error occurred", error);
 }

@@ -1,4 +1,4 @@
-import {DecimalIp} from "../src/ipAddress/DecimalIp";
+import {DecimalIp} from "../src/ipAddress/interfaces/DecimalIp";
 import {IpAddressParser} from "../src/ipAddress/IpAddressParser";
 
 describe("IpAddressParser tests", () => {

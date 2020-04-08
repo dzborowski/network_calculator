@@ -1,5 +1,5 @@
-import {BinaryOctet} from "../binary/BinaryOctet";
-import {Bit} from "../binary/Bit";
+import {BinaryOctet} from "../../binary/BinaryOctet";
+import {Bit} from "../../binary/Bit";
 
 export type BinaryOctetIp = [BinaryOctet, BinaryOctet, BinaryOctet, BinaryOctet]
 export type BinaryIp = [

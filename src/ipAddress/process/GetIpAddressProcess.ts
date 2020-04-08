@@ -1,7 +1,7 @@
 import * as readline from "readline";
-import {IpAddress} from "./IpAddress";
-import {IpAddressParser} from "./IpAddressParser";
-import {IpAddressValidator} from "./IpAddressValidator";
+import {IpAddress} from "../interfaces/IpAddress";
+import {IpAddressParser} from "../IpAddressParser";
+import {IpAddressValidator} from "../IpAddressValidator";
 
 export class GetIpAddressProcess {
 	protected readlineInterface:readline.Interface;

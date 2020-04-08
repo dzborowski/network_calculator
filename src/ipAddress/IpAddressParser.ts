@@ -1,7 +1,7 @@
 import {BinaryParser} from "../binary/BinaryParser";
-import {BinaryIp, BinaryOctetIp} from "./BinaryIp";
-import {DecimalIp} from "./DecimalIp";
-import {IpAddress} from "./IpAddress";
+import {BinaryIp, BinaryOctetIp} from "./interfaces/BinaryIp";
+import {DecimalIp} from "./interfaces/DecimalIp";
+import {IpAddress} from "./interfaces/IpAddress";
 import {IpAddressConfig} from "./IpAddressConfig";
 
 export class IpAddressParser {
