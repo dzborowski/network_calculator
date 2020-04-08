@@ -1,9 +1,7 @@
 import {App} from "./App";
 
-const app = new App();
-
 try {
-	app.run();
+	App.run();
 } catch (error) {
 	console.log("Error occurred", error);
 }

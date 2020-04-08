@@ -44,11 +44,12 @@ export class IpView {
 
 	public static displayIpAddressDetails(ipAddressDetails:IpAddressDetails) {
 		const formattedIpAddressDetails = IpView.getFormattedIpAddressDetails(ipAddressDetails);
+		console.log("Details");
 		console.log(formattedIpAddressDetails);
 	}
 
 	public static getFormattedIpAddressDetails(ipAddressDetails:IpAddressDetails):string {
-		return JSON.stringify(ipAddressDetails, null, 2);
+		return JSON.stringify(ipAddressDetails, null, 4);
 	}
 
 	protected static getFormattedDecimalIpFromBinaryIp(binaryIp:BinaryIp):string {
