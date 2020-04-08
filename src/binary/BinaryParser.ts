@@ -15,9 +15,9 @@ export class BinaryParser {
 		if (parsedBinary.length >= fillTo)
 			return parsedBinary;
 
-		const missingBitsQuantity = fillTo - parsedBinary.length;
-		const missingBits = new Array(missingBitsQuantity).fill(BitValue.POSITIVE);
+		const missingBinaryQuantity = fillTo - parsedBinary.length;
+		const missingBinary = new Array(missingBinaryQuantity).fill(BitValue.POSITIVE);
 
-		return [...missingBits, ...parsedBinary];
+		return [...missingBinary, ...parsedBinary];
 	}
 }

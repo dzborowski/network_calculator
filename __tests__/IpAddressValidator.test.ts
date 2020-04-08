@@ -3,6 +3,7 @@ import {IpAddressValidator} from "../src/ipAddress/IpAddressValidator";
 describe("IpAddressValidator tests", () => {
 	const validIpAddresses = [
 		"0.0.0.0/0",
+		"1.1.1.1/24",
 		"255.255.255.255/32",
 		"8.8.8.8/24",
 		"192.168.1.20/20",

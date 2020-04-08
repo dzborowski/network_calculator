@@ -22,7 +22,7 @@ export class IpView {
 		const firstHostBinaryIp = IpAddressParser.parseDecimalIpToBinaryIp(firstHostDecimalIp);
 		const lastHostDecimalIp = networkCalculator.getLastHostDecimalIp(broadcastDecimalIp);
 		const lastHostBinaryIp = IpAddressParser.parseDecimalIpToBinaryIp(lastHostDecimalIp);
-		const maxHostsQuantity = networkCalculator.getMaxHostsQuantity(networkDecimalIp, broadcastDecimalIp);
+		const maxHostsQuantity = networkCalculator.getMaxHostsQuantity(maskBinaryIp);
 
 		return {
 			hostDecimalIp: IpView.getFormattedDecimalIpFromBinaryIp(hostBinaryIp),

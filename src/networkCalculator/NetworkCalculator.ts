@@ -71,17 +71,10 @@ export class NetworkCalculator {
 		return lastHostDecimalIp as DecimalIp;
 	}
 
-	public getMaxHostsQuantity(networkDecimalIp:DecimalIp, broadcastDecimalIp:DecimalIp):number {
-		const octetsValues = [
-			broadcastDecimalIp[0] - networkDecimalIp[0],
-			broadcastDecimalIp[1] - networkDecimalIp[1],
-			broadcastDecimalIp[2] - networkDecimalIp[2],
-			broadcastDecimalIp[3] - networkDecimalIp[3],
-		]
-			.filter(octetValue => octetValue > 0)
-			.map(octetValue => octetValue++);
-
-		return octetsValues.reduce((hosts, octetValue) => hosts * octetValue) - 2;
+	public getMaxHostsQuantity(maskBinaryIp:BinaryIp):number {
+		const networkAndBroadcastQuantity = 2;
+		const maskHostsPart = maskBinaryIp.filter(bit => bit === BitValue.POSITIVE).length;
+		return 2 ** maskHostsPart - networkAndBroadcastQuantity;
 	}
 
 	protected getMaskBinaryIpLength(maskBinaryIp:BinaryIp):number {
