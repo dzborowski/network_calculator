@@ -5,7 +5,7 @@ import {IpAddress} from "./interfaces/IpAddress";
 import {IpAddressDetails} from "./interfaces/IpAddressDetails";
 import {IpAddressParser} from "./IpAddressParser";
 
-export class IpView {
+export class IpAddressView {
 	public static getIpAddressDetails(ipAddress:IpAddress):IpAddressDetails {
 		const networkCalculator = new NetworkCalculator(ipAddress);
 
@@ -25,25 +25,25 @@ export class IpView {
 		const maxHostsQuantity = networkCalculator.getMaxHostsQuantity(maskBinaryIp);
 
 		return {
-			hostDecimalIp: IpView.getFormattedDecimalIpFromBinaryIp(hostBinaryIp),
-			hostBinaryIp: IpView.getFormattedBinaryIpFromDecimalIp(hostDecimalIp),
-			maskDecimalIp: IpView.getFormattedDecimalIpFromBinaryIp(maskBinaryIp),
-			maskBinaryIp: IpView.getFormattedBinaryIpFromDecimalIp(maskDecimalIp),
-			networkDecimalIp: IpView.getFormattedDecimalIpFromBinaryIp(networkBinaryIp),
-			networkBinaryIp: IpView.getFormattedBinaryIpFromDecimalIp(networkDecimalIp),
+			hostDecimalIp: IpAddressView.getFormattedDecimalIpFromBinaryIp(hostBinaryIp),
+			hostBinaryIp: IpAddressView.getFormattedBinaryIpFromDecimalIp(hostDecimalIp),
+			maskDecimalIp: IpAddressView.getFormattedDecimalIpFromBinaryIp(maskBinaryIp),
+			maskBinaryIp: IpAddressView.getFormattedBinaryIpFromDecimalIp(maskDecimalIp),
+			networkDecimalIp: IpAddressView.getFormattedDecimalIpFromBinaryIp(networkBinaryIp),
+			networkBinaryIp: IpAddressView.getFormattedBinaryIpFromDecimalIp(networkDecimalIp),
 			networkClass,
-			broadcastDecimalIp: IpView.getFormattedDecimalIpFromBinaryIp(broadcastBinaryIp),
-			broadcastBinaryIp: IpView.getFormattedBinaryIpFromDecimalIp(broadcastDecimalIp),
-			firstHostDecimalIp: IpView.getFormattedDecimalIpFromBinaryIp(firstHostBinaryIp),
-			firstHostBinaryIp: IpView.getFormattedBinaryIpFromDecimalIp(firstHostDecimalIp),
-			lastHostDecimalIp: IpView.getFormattedDecimalIpFromBinaryIp(lastHostBinaryIp),
-			lastHostBinaryIp: IpView.getFormattedBinaryIpFromDecimalIp(lastHostDecimalIp),
+			broadcastDecimalIp: IpAddressView.getFormattedDecimalIpFromBinaryIp(broadcastBinaryIp),
+			broadcastBinaryIp: IpAddressView.getFormattedBinaryIpFromDecimalIp(broadcastDecimalIp),
+			firstHostDecimalIp: IpAddressView.getFormattedDecimalIpFromBinaryIp(firstHostBinaryIp),
+			firstHostBinaryIp: IpAddressView.getFormattedBinaryIpFromDecimalIp(firstHostDecimalIp),
+			lastHostDecimalIp: IpAddressView.getFormattedDecimalIpFromBinaryIp(lastHostBinaryIp),
+			lastHostBinaryIp: IpAddressView.getFormattedBinaryIpFromDecimalIp(lastHostDecimalIp),
 			maxHostsQuantity,
 		};
 	}
 
 	public static displayIpAddressDetails(ipAddressDetails:IpAddressDetails) {
-		const formattedIpAddressDetails = IpView.getFormattedIpAddressDetails(ipAddressDetails);
+		const formattedIpAddressDetails = IpAddressView.getFormattedIpAddressDetails(ipAddressDetails);
 		console.log("Ip address details");
 		console.log(formattedIpAddressDetails);
 	}

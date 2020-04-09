@@ -2,7 +2,7 @@ import * as appRoot from "app-root-path";
 import {promises as fsAsync} from "fs";
 import * as path from "path";
 import {IpAddressDetails} from "../interfaces/IpAddressDetails";
-import {IpView} from "../IpView";
+import {IpAddressView} from "../IpAddressView";
 
 export class SaveIpAddressDetailsProcess {
 	protected saveDirectoryName = "saves";
@@ -11,7 +11,7 @@ export class SaveIpAddressDetailsProcess {
 
 	public async saveIpAddressDetailsAsFile() {
 		await this.createSaveDirectory();
-		const formattedIpAddressDetails = IpView.getFormattedIpAddressDetails(this.ipAddressDetails);
+		const formattedIpAddressDetails = IpAddressView.getFormattedIpAddressDetails(this.ipAddressDetails);
 		const saveFilePath = this.getSaveFilePath();
 		await fsAsync.writeFile(saveFilePath, formattedIpAddressDetails, "utf8");
 		console.log(`Ip address details were saved in ${saveFilePath}`);
