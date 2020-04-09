@@ -20,12 +20,13 @@ export class GetIpAddressProcess {
 
 	protected async getValidIpAddress():Promise<string> {
 		let ipAddress = await this.getIpAddressFromUser();
-		const ipAddressValidator = new IpAddressValidator(ipAddress);
+		let ipAddressValidator = new IpAddressValidator(ipAddress);
 		let isIpAddressValid = ipAddressValidator.isIpAddressValid();
 
 		while (!isIpAddressValid) {
 			console.log("Invalid ip address, please try again");
 			ipAddress = await this.getIpAddressFromUser();
+			ipAddressValidator = new IpAddressValidator(ipAddress);
 			isIpAddressValid = ipAddressValidator.isIpAddressValid();
 		}
 

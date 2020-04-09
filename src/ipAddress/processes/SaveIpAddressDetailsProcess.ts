@@ -14,6 +14,7 @@ export class SaveIpAddressDetailsProcess {
 		const formattedIpAddressDetails = IpView.getFormattedIpAddressDetails(this.ipAddressDetails);
 		const saveFilePath = this.getSaveFilePath();
 		await fsAsync.writeFile(saveFilePath, formattedIpAddressDetails, "utf8");
+		console.log(`Ip address details were saved in ${saveFilePath}`);
 	}
 
 	protected async createSaveDirectory() {

@@ -44,7 +44,7 @@ export class IpView {
 
 	public static displayIpAddressDetails(ipAddressDetails:IpAddressDetails) {
 		const formattedIpAddressDetails = IpView.getFormattedIpAddressDetails(ipAddressDetails);
-		console.log("Details");
+		console.log("Ip address details");
 		console.log(formattedIpAddressDetails);
 	}
 
